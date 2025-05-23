@@ -16,75 +16,58 @@
       font-family: 'Inter', sans-serif;
       background: #0f172a; /* Dark slate background */
       color: #e2e8f0; /* Light text color */
-      padding: 2rem;
       line-height: 1.6; /* Improved readability */
       min-height: 100vh; /* Ensure body takes at least full viewport height */
       display: flex;
-      justify-content: center; /* Center content horizontally */
-      align-items: flex-start; /* Align content to the top */
+      flex-direction: column; /* Stack content vertically */
+      align-items: center; /* Center content horizontally */
     }
     .container {
       max-width: 900px;
       width: 100%; /* Make container responsive */
-      margin: auto;
-      background: #1e293b; /* Darker slate background for container */
-      border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Stronger shadow */
-      padding: 3rem;
-      opacity: 0;
-      transform: translateY(20px); /* Start slightly below */
-      animation: slideIn 0.8s ease-out forwards; /* Animation for the whole container */
+      margin: 0 auto; /* Center the container */
+      padding: 2rem; /* Add padding around the container */
     }
-    @keyframes slideIn {
-        to { opacity: 1; transform: translateY(0); }
-    }
-    h1 {
-      font-size: 2.8rem;
-      color: #67e8f9; /* Cyan accent color */
-      margin-bottom: 0.5rem;
+    .hero {
       text-align: center;
+      padding: 4rem 0; /* Add padding to the hero section */
+      margin-bottom: 2rem; /* Space below hero */
+    }
+    .hero h1 {
+      font-size: 3.5rem; /* Larger font size for hero title */
+      color: #67e8f9; /* Cyan accent color */
+      margin-bottom: 1rem;
       text-shadow: 0 0 8px rgba(103, 232, 249, 0.5); /* Subtle text shadow */
     }
-    .header-info {
-      text-align: center;
-      margin-bottom: 2.5rem; /* More space */
+    .hero p {
+      font-size: 1.2rem; /* Larger font size for hero subtitle */
       color: #94a3b8;
-      font-size: 1.1rem; /* Slightly larger font */
-    }
-    .header-info p {
-        margin-bottom: 0.5rem;
-    }
-    .header-info a {
-        color: #7dd3fc; /* Lighter cyan for links */
-        transition: color 0.3s ease; /* Smooth color transition */
-    }
-    .header-info a:hover {
-        color: #38bdf8; /* Brighter cyan on hover */
-        text-decoration: none; /* Remove underline on hover */
+      max-width: 600px; /* Limit width for better readability */
+      margin: 0 auto; /* Center the subtitle */
     }
     h2 {
       color: #60a5fa; /* Blue accent color */
-      font-size: 1.8rem;
-      margin-top: 3.5rem; /* More space above sections */
+      font-size: 2rem; /* Larger font size for section titles */
+      margin-top: 3rem; /* Space above sections */
       margin-bottom: 1.5rem;
       border-bottom: 2px solid #334155; /* Add a separator */
-      padding-bottom: 0.7rem; /* More padding below line */
+      padding-bottom: 0.7rem;
       text-transform: uppercase; /* Uppercase section titles */
-      letter-spacing: 1.5px; /* Add letter spacing */
+      letter-spacing: 1.5px;
     }
     h3 {
         color: #e2e8f0;
-        font-size: 1.3rem;
+        font-size: 1.5rem; /* Larger font size for subsection titles */
         margin-top: 1.5rem;
-        margin-bottom: 0.6rem; /* Less space below h3 */
+        margin-bottom: 0.6rem;
     }
     h4 {
         color: #cbd5e1;
-        font-size: 1.1rem;
+        font-size: 1.2rem; /* Larger font size for sub-subsection titles */
         margin-bottom: 0.5rem;
     }
     p, li {
-      font-size: 1rem;
+      font-size: 1.1rem; /* Larger font size for body text */
       margin-bottom: 0.75rem;
       opacity: 0; /* Start list items hidden for animation */
       transform: translateY(10px); /* Start list items slightly below */
@@ -122,9 +105,9 @@
     .meta-info {
         display: flex;
         justify-content: space-between;
-        font-size: 0.95rem; /* Slightly larger */
+        font-size: 1rem; /* Larger font size for meta info */
         color: #94a3b8;
-        margin-bottom: 0.6rem; /* More space below meta */
+        margin-bottom: 0.6rem;
     }
     .meta-info span {
         margin-left: 1rem;
@@ -193,12 +176,13 @@
     .section.is-visible ul li:nth-child(19) { animation-delay: 1.9s; }
     .section.is-visible ul li:nth-child(20) { animation-delay: 2.0s; }
 
+
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Nikhil Bansal</h1>
-    <div class="header-info">
+    <div class="hero">
+      <h1>Nikhil Bansal</h1>
       <p>Software Engineer - Backend | Python | Cloud Applications | Customer-Focused Products</p>
       <p>Phone: 9958695355 | Email: <a href="mailto:bn5799@gmail.com">bn5799@gmail.com</a> | Location: Bengaluru</p>
     </div>
