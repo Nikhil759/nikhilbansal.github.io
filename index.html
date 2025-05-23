@@ -14,24 +14,46 @@
     }
     body {
       font-family: 'Inter', sans-serif;
-      background: #0f172a; /* Dark slate background */
+      background: linear-gradient(135deg, #0f172a, #1e293b); /* Gradient background */
       color: #e2e8f0; /* Light text color */
       line-height: 1.6; /* Improved readability */
       min-height: 100vh; /* Ensure body takes at least full viewport height */
       display: flex;
       flex-direction: column; /* Stack content vertically */
       align-items: center; /* Center content horizontally */
+      position: relative; /* For absolute positioning of background elements */
+      overflow-x: hidden; /* Prevent horizontal scrollbar */
+    }
+    /* Animated background gradient */
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, rgba(103, 232, 249, 0.1), rgba(96, 165, 250, 0.1));
+      z-index: -1;
+      animation: gradientAnimation 15s ease infinite;
+    }
+    @keyframes gradientAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
     .container {
       max-width: 900px;
       width: 100%; /* Make container responsive */
       margin: 0 auto; /* Center the container */
       padding: 2rem; /* Add padding around the container */
+      position: relative; /* For absolute positioning of elements */
+      z-index: 1; /* Ensure content is above background */
     }
     .hero {
       text-align: center;
       padding: 4rem 0; /* Add padding to the hero section */
       margin-bottom: 2rem; /* Space below hero */
+      position: relative; /* For absolute positioning of elements */
     }
     .hero h1 {
       font-size: 3.5rem; /* Larger font size for hero title */
@@ -176,10 +198,256 @@
     .section.is-visible ul li:nth-child(19) { animation-delay: 1.9s; }
     .section.is-visible ul li:nth-child(20) { animation-delay: 2.0s; }
 
+    /* Interactive Project Cards */
+    .project-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+    .project-card {
+        background: #1e293b;
+        border-radius: 8px;
+        padding: 1.5rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .project-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    }
+    .project-card h3 {
+        margin-top: 0;
+    }
+    .project-card p {
+        margin-bottom: 1rem;
+    }
+    .project-card .meta-info {
+        margin-bottom: 1rem;
+    }
+
+    /* Skill Tags */
+    .skills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+    .skill-tag {
+        background: #334155;
+        color: #e2e8f0;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        transition: background 0.3s ease, transform 0.3s ease;
+    }
+    .skill-tag:hover {
+        background: #60a5fa;
+        transform: scale(1.05);
+    }
+
+    /* Animated Timeline */
+    .timeline {
+        position: relative;
+        margin-top: 2rem;
+    }
+    .timeline::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 2px;
+        height: 100%;
+        background: #60a5fa;
+    }
+    .timeline-item {
+        position: relative;
+        padding-left: 2rem;
+        margin-bottom: 2rem;
+    }
+    .timeline-item::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -5px;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #60a5fa;
+    }
+
+    /* Dynamic Footer */
+    footer {
+        text-align: center;
+        padding: 2rem 0;
+        margin-top: 4rem;
+        border-top: 1px solid #334155;
+    }
+    .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+    .social-links a {
+        color: #94a3b8;
+        font-size: 1.5rem;
+        transition: color 0.3s ease, transform 0.3s ease;
+    }
+    .social-links a:hover {
+        color: #60a5fa;
+        transform: scale(1.2);
+    }
+
+    /* Floating Background Elements */
+    .floating-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .floating-shape {
+      position: absolute;
+      background: rgba(103, 232, 249, 0.1);
+      border-radius: 50%;
+      animation: float 20s infinite linear;
+    }
+
+    .shape1 {
+      width: 300px;
+      height: 300px;
+      top: -150px;
+      left: -150px;
+      animation-delay: 0s;
+    }
+
+    .shape2 {
+      width: 200px;
+      height: 200px;
+      top: 50%;
+      right: -100px;
+      animation-delay: -5s;
+    }
+
+    .shape3 {
+      width: 150px;
+      height: 150px;
+      bottom: -75px;
+      left: 50%;
+      animation-delay: -10s;
+    }
+
+    .shape4 {
+      width: 100px;
+      height: 100px;
+      top: 20%;
+      left: 30%;
+      animation-delay: -15s;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+      25% {
+        transform: translate(100px, 100px) rotate(90deg);
+      }
+      50% {
+        transform: translate(0, 200px) rotate(180deg);
+      }
+      75% {
+        transform: translate(-100px, 100px) rotate(270deg);
+      }
+      100% {
+        transform: translate(0, 0) rotate(360deg);
+      }
+    }
+
+    /* Particle Background */
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+    }
+
+    .particle {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: rgba(103, 232, 249, 0.5);
+      border-radius: 50%;
+      animation: particleFloat 15s infinite linear;
+    }
+
+    @keyframes particleFloat {
+      0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) translateX(100px);
+        opacity: 0;
+      }
+    }
+
+    /* Enhanced Hero Section */
+    .hero {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero h1 {
+      position: relative;
+      display: inline-block;
+    }
+
+    .hero h1::after {
+      content: none;
+    }
+
+    /* Enhanced Section Transitions */
+    .section {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, transparent, rgba(103, 232, 249, 0.1), transparent);
+      transform: translateX(-100%);
+      transition: transform 0.6s ease;
+    }
+
+    .section.is-visible::before {
+      transform: translateX(100%);
+    }
 
   </style>
 </head>
 <body>
+  <div class="floating-bg">
+    <div class="floating-shape shape1"></div>
+    <div class="floating-shape shape2"></div>
+    <div class="floating-shape shape3"></div>
+    <div class="floating-shape shape4"></div>
+  </div>
+  <div class="particles" id="particles"></div>
+  
   <div class="container">
     <div class="hero">
       <h1>Nikhil Bansal</h1>
@@ -194,57 +462,59 @@
 
     <div class="section">
       <h2>Experience</h2>
-      <div class="experience-item">
-        <h3>Software Engineer II - Cloud Applications</h3>
-        <div class="meta-info">
-            <span>Commonwealth Bank of Australia</span>
-            <span>Bangalore, India</span>
+      <div class="timeline">
+        <div class="timeline-item">
+          <h3>Software Engineer II - Cloud Applications</h3>
+          <div class="meta-info">
+              <span><a href="https://www.commbank.com.au" target="_blank">Commonwealth Bank of Australia</a></span>
+              <span>Bangalore, India</span>
+          </div>
+          <div class="meta-info">
+              <span>Australia's leading provider of Financial Services</span>
+              <span>06/2021 - Present</span>
+          </div>
+          <ul>
+            <li>Played a pivotal role in CBA's Greenfield Project, a self-service cloud platform built on AWS, enabling seamless integration of automated data pipelines for teams in Data Science, AI/ML, Cybersecurity to enhanced data-driven decision-making.</li>
+            <li>Designed scalable backend systems for ingestion, transformation and orchestration using Python and Airflow, integrated with Flask APIs to power secure enterprise-grade solutions.</li>
+            <li>Developed a web-based ingestion and transformation framework using Django framework, enabling teams to configure and manage data pipelines through a user-friendly interface.</li>
+            <li>Developed operational metadata services with PostgreSQL (RDS) on ECS, improving Airflow job monitoring, failure handling, and automation via ServiceNow and AWS SNS</li>
+            <li>Leveraged GitHub Copilot to boost development velocity and reduce boilerplate for API and data pipeline code.</li>
+            <li>Led the internal Al-lympics 2024 Hackathon, helping teams create a Claude-integrated HR chatbot using NLP and custom prompts by leveraging advanced HR tools and services.</li>
+            <li>Delivered an internal email automation system generating personalized campaign templates, improving outreach productivity by 5x.</li>
+          </ul>
         </div>
-        <div class="meta-info">
-            <span>Australia's leading provider of Financial Services</span>
-            <span>06/2021 - Present</span>
+        <div class="timeline-item">
+          <h3>Data Solutions Engineer</h3>
+           <div class="meta-info">
+              <span><a href="https://hevodata.com/" target="_blank">Hevo Data</a></span>
+              <span>Bangalore</span>
+          </div>
+          <div class="meta-info">
+               <span>Automated Unified Data Platform</span>
+              <span>05/2020 - 06/2021</span>
+          </div>
+          <ul>
+            <li>Collaborated with clients across the US and Europe to develop data pipelines using Hevo's cloud-based ETL platform, integrating diverse data sources like SQL/NoSQL databases, APIs, Salesforce, and Google Ads.</li>
+            <li>Engineered real-time streaming solutions for processing 3 billion+ records monthly across various data sources.Extracted and processed data from platforms like AWS Redshift, BigQuery, MongoDB, and Snowflake, ensuring efficient data handling.</li>
+            <li>Recognized for managing a portfolio of 25+ clients and delivering $70,000+ in revenue within 6 months at Hevo.</li>
+            <li>Authored comprehensive technical documentation on data engineering concepts and cloud technologies (AWS, GCP) saving the team over 50 hours of effort.</li>
+          </ul>
         </div>
-        <ul>
-          <li>Played a pivotal role in CBA's Greenfield Project, a self-service cloud platform built on AWS, enabling seamless integration of automated data pipelines for teams in Data Science, AI/ML, Cybersecurity to enhanced data-driven decision-making.</li>
-          <li>Designed scalable backend systems for ingestion, transformation and orchestration using Python and Airflow, integrated with Flask APIs to power secure enterprise-grade solutions.</li>
-          <li>Developed a web-based ingestion and transformation framework using Django framework, enabling teams to configure and manage data pipelines through a user-friendly interface.</li>
-          <li>Developed operational metadata services with PostgreSQL (RDS) on ECS, improving Airflow job monitoring, failure handling, and automation via ServiceNow and AWS SNS</li>
-          <li>Leveraged GitHub Copilot to boost development velocity and reduce boilerplate for API and data pipeline code.</li>
-          <li>Led the internal Al-lympics 2024 Hackathon, helping teams create a Claude-integrated HR chatbot using NLP and custom prompts by leveraging advanced HR tools and services.</li>
-          <li>Delivered an internal email automation system generating personalized campaign templates, improving outreach productivity by 5x.</li>
-        </ul>
-      </div>
-      <div class="experience-item">
-        <h3>Data Solutions Engineer</h3>
-         <div class="meta-info">
-            <span>Hevo Data</span>
-            <span>Bangalore</span>
+         <div class="timeline-item">
+          <h3>Software Engineer Intern</h3>
+           <div class="meta-info">
+              <span><a href="https://www.publicissapient.com/" target="_blank">Publicis Sapient</a></span>
+              <span>Gurgaon</span>
+          </div>
+          <div class="meta-info">
+              <span>Digital Business Transformation Company</span>
+              <span>01/2021 - 05/2021</span>
+          </div>
+          <ul>
+              <li>Developed web applications using the Angular framework and technologies like HTML, JavaScript, TypeScript, and CSS, contributing over 1,000 lines of code within an Agile environment.</li>
+              <li>Conducted 50+ hours of testing and debugging, resolving 20+ critical issues and optimizing application performance by 60%.</li>
+          </ul>
         </div>
-        <div class="meta-info">
-             <span>Automated Unified Data Platform</span>
-            <span>05/2020 - 06/2021</span>
-        </div>
-        <ul>
-          <li>Collaborated with clients across the US and Europe to develop data pipelines using Hevo's cloud-based ETL platform, integrating diverse data sources like SQL/NoSQL databases, APIs, Salesforce, and Google Ads.</li>
-          <li>Engineered real-time streaming solutions for processing 3 billion+ records monthly across various data sources.Extracted and processed data from platforms like AWS Redshift, BigQuery, MongoDB, and Snowflake, ensuring efficient data handling.</li>
-          <li>Recognized for managing a portfolio of 25+ clients and delivering $70,000+ in revenue within 6 months at Hevo.</li>
-          <li>Authored comprehensive technical documentation on data engineering concepts and cloud technologies (AWS, GCP) saving the team over 50 hours of effort.</li>
-        </ul>
-      </div>
-       <div class="experience-item">
-        <h3>Software Engineer Intern</h3>
-         <div class="meta-info">
-            <span>Publicis Sapient</span>
-            <span>Gurgaon</span>
-        </div>
-        <div class="meta-info">
-            <span>Digital Business Transformation Company</span>
-            <span>01/2021 - 05/2021</span>
-        </div>
-        <ul>
-            <li>Developed web applications using the Angular framework and technologies like HTML, JavaScript, TypeScript, and CSS, contributing over 1,000 lines of code within an Agile environment.</li>
-            <li>Conducted 50+ hours of testing and debugging, resolving 20+ critical issues and optimizing application performance by 60%.</li>
-        </ul>
       </div>
     </div>
 
@@ -265,19 +535,40 @@
 
      <div class="section">
       <h2>Projects</h2>
-      <div class="project-item">
-        <h3>LEX: Legal AI Assistant Application</h3>
-        <div class="meta-info">
-            <span></span>
-            <span>12/2024 - 01/2025</span>
+      <div class="project-grid">
+        <div class="project-card">
+          <h3>LEX: Legal AI Assistant Application</h3>
+          <div class="meta-info">
+              <span></span>
+              <span>12/2024 - 01/2025</span>
+          </div>
+          <ul>
+              <li>Designed an Al-powered legal assistant using Generative Al to handle over 16,000 legal queries annually, significantly reducing the workload on the paralegal team.</li>
+              <li>Built a comprehensive legal document repository leveraging FAISS indexing and advanced NLP models (Hugging Face, GPT-40).</li>
+              <li>Developed precise, context-aware query responses using GPT-40 APIs, enhancing the accuracy and efficiency of legal services.</li>
+          </ul>
         </div>
-        <ul>
-            <li>Designed an Al-powered legal assistant using Generative Al to handle over 16,000 legal queries annually, significantly reducing the workload on the paralegal team.</li>
-            <li>Built a comprehensive legal document repository leveraging FAISS indexing and advanced NLP models (Hugging Face, GPT-40).</li>
-            <li>Developed precise, context-aware query responses using GPT-40 APIs, enhancing the accuracy and efficiency of legal services.</li>
-        </ul>
+         <!-- Add other projects if available in future -->
       </div>
-       <!-- Add other projects if available in future -->
+    </div>
+
+    <div class="section">
+      <h2>Skills</h2>
+      <div class="skills">
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">AWS</span>
+        <span class="skill-tag">Django</span>
+        <span class="skill-tag">Flask</span>
+        <span class="skill-tag">Airflow</span>
+        <span class="skill-tag">PostgreSQL</span>
+        <span class="skill-tag">REST APIs</span>
+        <span class="skill-tag">Microservices</span>
+        <span class="skill-tag">Cloud-Native</span>
+        <span class="skill-tag">Data Engineering</span>
+        <span class="skill-tag">ETL</span>
+        <span class="skill-tag">Git</span>
+        <span class="skill-tag">Agile</span>
+      </div>
     </div>
 
     <div class="section">
@@ -297,14 +588,13 @@
       </div>
     </div>
 
-    <div class="section">
-      <h2>Links</h2>
-      <ul>
-        <li><a href="https://github.com/nikhil759" target="_blank">GitHub</a></li>
-        <li><a href="https://linkedin.com/in/nikhilbansal759" target="_blank">LinkedIn</a></li>
+    <footer>
+      <div class="social-links">
+        <a href="https://github.com/nikhil759" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/nikhilbansal7599/" target="_blank">LinkedIn</a>
         <!-- Add resume link here if available -->
-      </ul>
-    </div>
+      </div>
+    </footer>
   </div>
   <script>
       document.addEventListener('DOMContentLoaded', () => {
@@ -342,6 +632,32 @@
           // items.forEach(item => {
           //     itemObserver.observe(item);
           // });
+
+          // Add particle generation
+          function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+
+            for (let i = 0; i < particleCount; i++) {
+              const particle = document.createElement('div');
+              particle.className = 'particle';
+              
+              // Random starting position
+              particle.style.left = Math.random() * 100 + 'vw';
+              particle.style.top = Math.random() * 100 + 'vh';
+              
+              // Random animation duration
+              particle.style.animationDuration = (Math.random() * 10 + 5) + 's';
+              
+              // Random animation delay
+              particle.style.animationDelay = (Math.random() * 5) + 's';
+              
+              particlesContainer.appendChild(particle);
+            }
+          }
+
+          // Initialize particles when the page loads
+          createParticles();
       });
   </script>
 </body>
