@@ -135,6 +135,20 @@
         margin-left: 1rem;
     }
 
+    .company-logo {
+      height: 2em; /* Increased size */
+      width: auto;
+      vertical-align: middle;
+      margin-right: 1rem;
+      filter: brightness(1.2); /* Make logos slightly brighter */
+      transition: transform 0.3s ease; /* Smooth transition for hover effect */
+      object-fit: contain; /* Maintain aspect ratio */
+    }
+
+    .company-logo:hover {
+      transform: scale(1.1); /* Slight zoom on hover */
+    }
+
     /* Keyframe for fade-in animation for sections */
     @keyframes fadeIn {
         from { opacity: 0; transform: translateY(20px); }
@@ -466,7 +480,7 @@
         <div class="timeline-item">
           <h3>Software Engineer II - Cloud Applications</h3>
           <div class="meta-info">
-              <span><a href="https://www.commbank.com.au" target="_blank">Commonwealth Bank of Australia</a></span>
+              <span><img src="https://upload.wikimedia.org/wikipedia/commons/7/73/Commonwealth_Bank_Logo.svg" alt="Commonwealth Bank of Australia Logo" class="company-logo"><a href="https://www.commbank.com.au" target="_blank">Commonwealth Bank of Australia</a></span>
               <span>Bangalore, India</span>
           </div>
           <div class="meta-info">
@@ -486,7 +500,7 @@
         <div class="timeline-item">
           <h3>Data Solutions Engineer</h3>
            <div class="meta-info">
-              <span><a href="https://hevodata.com/" target="_blank">Hevo Data</a></span>
+              <span><img src="./hevo.png" alt="Hevo Data Logo" class="company-logo"><a href="https://hevodata.com/" target="_blank">Hevo Data</a></span>
               <span>Bangalore</span>
           </div>
           <div class="meta-info">
@@ -503,7 +517,7 @@
          <div class="timeline-item">
           <h3>Software Engineer Intern</h3>
            <div class="meta-info">
-              <span><a href="https://www.publicissapient.com/" target="_blank">Publicis Sapient</a></span>
+              <span><img src="./sapient.png" alt="Publicis Sapient Logo" class="company-logo"><a href="https://www.publicissapient.com/" target="_blank">Publicis Sapient</a></span>
               <span>Gurgaon</span>
           </div>
           <div class="meta-info">
